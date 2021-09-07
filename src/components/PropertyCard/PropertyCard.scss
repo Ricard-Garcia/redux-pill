@@ -1,0 +1,11 @@
+.property-card {
+  .left-card {
+    img {
+      object-fit: scale-down;
+    }
+  }
+
+  .right-card {
+    flex-grow: 1;
+  }
+}

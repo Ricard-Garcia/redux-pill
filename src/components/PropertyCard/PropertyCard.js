@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./PropertyCard.scss";
+
 function PropertyCard({ foundProperty }) {
   return (
     <div className="d-flex flex-column">
