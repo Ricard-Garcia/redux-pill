@@ -2,14 +2,16 @@ import React from "react";
 
 import PropertyCard from "../PropertyCard";
 
-function PropertiesList() {
+function PropertiesList({ foundProperties }) {
   // Redux properties
-  const properties = [{ name: "p1" }, { name: "p2" }];
+  // const properties = [{ name: "p1" }, { name: "p2" }];
+
+  console.log(foundProperties, "Found properties!");
 
   return (
     <div className="d-flex flex-column">
-      {properties.map((property) => {
-        return <PropertyCard property={property} />;
+      {foundProperties.map((property) => {
+        return <PropertyCard foundProperty={property} />;
       })}
     </div>
   );
