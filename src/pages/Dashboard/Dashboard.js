@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import withLayout from "../../HOC/withLayout";
 import PropertiesList from "../../components/PropertiesList";
 
 import { getAllProperties } from "../../api/propertiesApi";
 
 function Dashboard() {
+  const search = useSelector((state) => state.search);
+
   const [loadedProperties, setLoadedProperties] = useState([]);
 
   const loadInitialProperties = async () => {
@@ -23,6 +26,7 @@ function Dashboard() {
   return (
     <div>
       <h1>Dashboard page</h1>
+      <p>This is what you searched {search}</p>
       <PropertiesList />
     </div>
   );
