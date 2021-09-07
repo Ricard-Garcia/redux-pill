@@ -1,0 +1,8 @@
+.filter-wrapper {
+  min-height: 240px;
+  .filter-column {
+    min-height: 100%;
+    background-color: darkgrey;
+    outline: 1px solid black;
+  }
+}

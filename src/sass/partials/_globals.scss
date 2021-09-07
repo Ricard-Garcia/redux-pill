@@ -9,9 +9,10 @@
 
   .header,
   .footer {
-    height: 80px;
+    min-height: 80px;
   }
   .main {
     flex-grow: 1;
+    overflow-y: scroll;
   }
 }

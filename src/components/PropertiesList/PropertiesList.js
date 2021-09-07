@@ -6,7 +6,7 @@ function PropertiesList({ foundProperties }) {
   console.log(foundProperties, "Found properties!");
 
   return (
-    <div className="d-flex flex-column">
+    <div className="row">
       {foundProperties.map((property) => {
         return <PropertyCard key={property.id} foundProperty={property} />;
       })}

@@ -45,7 +45,7 @@
       "bath": 1,
       "size": 67,
       "price": 400000,
-      "pet": false,
+      "pet": true,
       "lift": false,
       "garden": true,
       "air_conditioning": true,

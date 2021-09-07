@@ -1,13 +1,54 @@
 .property-card {
-  .left-card {
-    img {
-      width: 300px;
-      max-height: 200px;
-      object-fit: cover;
-    }
+  position: relative;
+  img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
   }
 
   .right-card {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100%;
     flex-grow: 1;
+    transition: 0.7s;
+    // background: rgb(29, 29, 29);
+    background: linear-gradient(
+      90deg,
+      rgba(29, 29, 29, 0.46682422969187676) 0%,
+      rgba(0, 0, 0, 0.06626400560224088) 50%
+    );
+
+    .top-part {
+      .title {
+        overflow: hidden;
+        white-space: nowrap;
+        overflow: ellipsis;
+        font-weight: bold;
+        line-height: 1.2;
+      }
+      p {
+        color: white;
+      }
+    }
+
+    .bottom-part {
+      flex-grow: 1;
+      .property-caption {
+        font-size: 20px;
+        color: white;
+      }
+
+      .other {
+        font-size: 12px;
+        flex-grow: 1;
+      }
+    }
+  }
+  .right-card:hover {
+    background: unset;
+    background-color: rgba(255, 255, 255, 0.582);
   }
 }
