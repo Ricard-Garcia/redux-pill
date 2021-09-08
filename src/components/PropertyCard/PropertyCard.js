@@ -17,11 +17,11 @@ function PropertyCard({ foundProperty }) {
         </div>
         <div className="bottom-part d-flex flex-column">
           <div className="rooms d-flex property-caption">
-            <i class="uil uil-bed-double me-2" />
+            <i className="uil uil-bed-double me-2" />
             <div>{foundProperty.room}</div>
           </div>
           <div className="bath d-flex property-caption">
-            <i class="uil uil-bath me-2" />
+            <i className="uil uil-bath me-2" />
             <div>{foundProperty.bath}</div>
           </div>
           <div className="sixe d-flex property-caption">

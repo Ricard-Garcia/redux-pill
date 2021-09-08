@@ -1,5 +1,19 @@
 * {
+  // Avoid text selection
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  // Guides
   // outline: 2px solid blue;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
 }
 
 #root {
@@ -7,12 +21,19 @@
   flex-direction: column;
   height: 100vh;
 
-  .header,
-  .footer {
+  .header {
     min-height: 80px;
+    .page-title {
+      text-decoration: none;
+    }
   }
   .main {
+    padding: 0 90px;
     flex-grow: 1;
     overflow-y: scroll;
+  }
+
+  .footer {
+    min-height: 40px;
   }
 }

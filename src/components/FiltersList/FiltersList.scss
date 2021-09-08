@@ -1,8 +1,21 @@
-.filter-wrapper {
+.filters-block {
   min-height: 240px;
   .filter-column {
     min-height: 100%;
-    background-color: darkgrey;
-    outline: 1px solid black;
+
+    hr {
+      border-color: lightgrey;
+    }
+    .filter-wrapper {
+      height: 80px;
+
+      .filter-title {
+        font-weight: bold;
+      }
+    }
   }
+}
+
+.ui5-slider-progress {
+  background: black;
 }

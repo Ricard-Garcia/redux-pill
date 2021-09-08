@@ -1,0 +1,16 @@
+.container {
+  input {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  input:checked + div {
+    background-color: black;
+  }
+  div {
+    min-width: 12px;
+    min-height: 12px;
+    border-radius: 50%;
+  }
+}

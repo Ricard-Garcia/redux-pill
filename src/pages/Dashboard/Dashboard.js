@@ -23,14 +23,14 @@ function Dashboard() {
 
   // useEffect(() => {
   //   setLoadedProperties([]);
-  // }, []);
+  // });
 
   return (
-    <div>
+    <>
       <h1 className="mb-4">Found properties</h1>
       <FilterList />
       <PropertiesList foundProperties={search.foundProperties} />
-    </div>
+    </>
   );
 }
 

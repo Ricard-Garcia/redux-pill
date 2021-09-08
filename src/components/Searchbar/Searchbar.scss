@@ -1,0 +1,20 @@
+form {
+  height: 40px;
+  input,
+  button {
+    height: 100%;
+  }
+
+  input {
+    flex-grow: 1;
+  }
+
+  button {
+    min-width: 80px;
+  }
+
+  button:hover {
+    background-color: lightgrey;
+    color: black;
+  }
+}

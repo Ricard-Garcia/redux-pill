@@ -1,36 +1,13 @@
 import React, { useRef } from "react";
-import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setSearch, getSearch } from "../../redux/search/actions";
-
-import { DASHBOARD_URL } from "../../constants/routes";
 
 import withLayout from "../../HOC/withLayout";
+import Searchbar from "../../components/Searchbar";
 
 function Home() {
-  const history = useHistory();
-  const searchInput = useRef();
-  const search = useSelector((state) => state.search);
-  const dispatch = useDispatch();
-
-  function handleSubmit() {
-    const searchedText = searchInput.current.value;
-    dispatch(setSearch(searchedText));
-    dispatch(getSearch(searchedText));
-    history.push(DASHBOARD_URL);
-  }
-
   return (
-    <div>
-      <h1>Home page</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          ref={searchInput}
-          type="text"
-          placeholder={search.searchedText}
-        />
-        <button type="submit">Search</button>
-      </form>
+    <div className="row d-flex align-items-center">
+      <h1 className="col col-12 col-md-6">Home page</h1>
+      <Searchbar classes="col col-12 col-md-6" isHome />
     </div>
   );
 }
