@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import withLayout from "../../HOC/withLayout";
 import Searchbar from "../../components/Searchbar";

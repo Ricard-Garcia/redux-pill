@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import withLayout from "../../HOC/withLayout";
 
@@ -9,21 +9,6 @@ import FilterList from "../../components/FiltersList";
 
 function Dashboard() {
   const search = useSelector((state) => state.search);
-
-  // const [loadedProperties, setLoadedProperties] = useState([]);
-
-  // const loadInitialProperties = async () => {
-  //   try {
-  //     const { data } = await getAllProperties();
-  //     setLoadedProperties(JSON.stringify(data));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   setLoadedProperties([]);
-  // });
 
   return (
     <>

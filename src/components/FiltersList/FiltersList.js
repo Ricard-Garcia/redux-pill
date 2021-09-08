@@ -7,9 +7,9 @@ import CustomCheckbox from "../../components/CustomCheckbox";
 import "./FiltersList.scss";
 
 function FiltersList({ foundProperties }) {
-  console.log(foundProperties, "Found properties!");
+  // console.log(foundProperties, "Found properties!");
 
-  // Do function to get the highest
+  // Do function to get the highest price
 
   return (
     <div className="row filters-block bg-light border rounded g-4 mt-5 mb-5 p-3 pb-5">
