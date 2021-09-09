@@ -4,7 +4,9 @@ import { RangeSlider } from "@ui5/webcomponents-react";
 
 import Searchbar from "../../components/Searchbar";
 import CustomCheckbox from "../../components/CustomCheckbox";
-import { getQuery } from "../../utilities/getQuery";
+import { getQuery, getMaxPrice } from "../../utils/utils";
+
+import db from "../../db/db.json";
 
 import "./FiltersList.scss";
 
@@ -20,6 +22,7 @@ function FiltersList({ foundProperties }) {
   const [filters, setFilters] = useState(stateFilters);
 
   useEffect(() => {
+    console.log(filters);
     getQuery(filters);
   }, [filters]);
 
@@ -33,18 +36,20 @@ function FiltersList({ foundProperties }) {
       !Array.isArray(stateField)
     ) {
       stateField[filterValue] = e.target.checked;
-      console.log(filters);
       setFilters({ ...filters });
     } else if (e.target.type === "checkbox") {
+      console.log("clicked checkbox --> ", stateField);
       setFilters({ ...filters, [filterValue]: e.target.checked });
     } else if (e.target.type === "select-one") {
       setFilters({ ...filters, [filterName]: filterValue });
     } else {
-      //Range slider function goes here
+      setFilters({
+        ...filters,
+        minPrice: e.target.startValue,
+        maxPrice: e.target.endValue,
+      });
     }
   }
-
-  // Do function to get the highest price
 
   return (
     <div className="row filters-block bg-light border rounded g-4 mt-5 mb-5 p-3 pb-5">
@@ -242,21 +247,22 @@ function FiltersList({ foundProperties }) {
         <div className="row mb-4 px-2 g-3 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Price range</div>
           <div className="col col-6 text-center text-muted d-flex align-items-center justify-content-center">
-            <p className="m-0 border rounded w-100">Lowest price</p>
+            <p className="m-0 border rounded w-100">${filters.minPrice}</p>
           </div>
           <div className="col col-6 text-center text-muted d-flex align-items-center justify-content-center">
-            <p className="m-0 border rounded w-100">Highest price</p>
+            <p className="m-0 border rounded w-100">${filters.maxPrice}</p>
           </div>
           <RangeSlider
             className=""
-            max={500000}
+            endValue={getMaxPrice(db.properties)}
+            max={getMaxPrice(db.properties)}
             onChange={handleFilters}
-            onInput={function noRefCheck() {}}
+            // onInput={function noRefCheck() {}}
             slot=""
             style={{
               padding: "0 20px",
             }}
-            tooltip=""
+            tooltip="true"
           />
         </div>
       </div>
