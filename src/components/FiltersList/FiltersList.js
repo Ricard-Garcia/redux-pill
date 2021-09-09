@@ -57,7 +57,7 @@ function FiltersList({ foundProperties }) {
         {/* Searchbar */}
         <div className="row mb-4 px-2 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Searchbar</div>
-          <Searchbar classes="mb-3" />
+          <Searchbar classes="px-2 my-1" />
         </div>
         <hr />
         {/* Type */}
@@ -93,9 +93,9 @@ function FiltersList({ foundProperties }) {
 
         <hr />
         {/* Condition */}
-        <div className="mb-4 px-2 filter-wrapper">
+        <div className="row mb-4 px-2 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Condition</div>
-          <div className="row row-cols-2">
+          <div className="row row-cols-1 row-cols-md-2">
             <CustomCheckbox
               onChange={handleFilters}
               title="New homes"

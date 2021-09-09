@@ -23,5 +23,6 @@ export function getFilteredProperties(
   query,
   api = makePropertiesApi()
 ) {
-  return api.get(`?q=${searched}?${query}`);
+  console.log("getFilteredProperties -->", `?q=${searched}${query}`);
+  return api.get(`?q=${searched}${query}`);
 }
