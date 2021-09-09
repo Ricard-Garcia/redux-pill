@@ -17,3 +17,11 @@ export function getSearched(searched, api = makePropertiesApi()) {
 export function getProperty(productId, api = makePropertiesApi()) {
   return api.get(`/${productId}`);
 }
+
+export function getFilteredProperties(
+  searched,
+  query,
+  api = makePropertiesApi()
+) {
+  return api.get(`?q=${searched}?${query}`);
+}

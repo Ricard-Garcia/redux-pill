@@ -4,6 +4,7 @@ import {
   RESET_SEARCH,
   LOADING_SEARCH,
   ERROR_SEARCH,
+  SET_FILTERS,
 } from "./types";
 
 import initialState from "./state";
@@ -35,6 +36,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         searchedText: "Nothing found",
         hasError: true,
+      };
+    }
+    case SET_FILTERS: {
+      return {
+        ...state,
+        filterActive: true,
+        isLoading: false,
+        filters: {
+          ...action.payload,
+        },
       };
     }
     default: {

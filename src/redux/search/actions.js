@@ -4,9 +4,10 @@ import {
   RESET_SEARCH,
   LOADING_SEARCH,
   ERROR_SEARCH,
+  SET_FILTERS,
 } from "./types";
 
-import { getSearched } from "../../api/propertiesApi";
+import { getSearched, getFilteredProperties } from "../../api/propertiesApi";
 
 export const setSearch = (value) => ({
   type: SET_SEARCH,
@@ -15,6 +16,8 @@ export const setSearch = (value) => ({
 
 export const getSearch = (searched) => {
   return async (dispatch) => {
+    dispatch(resetSearch());
+    dispatch(setSearch(searched));
     dispatch(loadingSearch());
 
     const { data } = await getSearched(searched);
@@ -37,3 +40,16 @@ export const loadingSearch = () => ({
 export const errorSearch = () => ({
   type: ERROR_SEARCH,
 });
+
+export const setFilters = (searched, query) => {
+  return async (dispatch) => {
+    dispatch(loadingSearch());
+
+    const { filteredData } = await getFilteredProperties(searched, query);
+
+    dispatch({
+      type: SET_FILTERS,
+      payload: filteredData,
+    });
+  };
+};
