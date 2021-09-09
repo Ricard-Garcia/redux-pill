@@ -38,6 +38,7 @@ function PropertyCard({ foundProperty }) {
             {foundProperty.pet && "Pets are allowed. "}
             {foundProperty.lift && "Aparment has lift. "}
             {foundProperty.garden && "Aparment has garden. "}
+            {foundProperty.terrace && "Aparment has terrace. "}
             {foundProperty.air_conditioning &&
               "Aparment has air conditioning. "}
             {foundProperty.swimming_pool && "Aparment has swimming pool. "}
