@@ -253,7 +253,7 @@ function FiltersList({ foundProperties }) {
             <p className="m-0 border rounded w-100">${filters.maxPrice}</p>
           </div>
           <RangeSlider
-            className=""
+            className="range-slider"
             endValue={getMaxPrice(db.properties)}
             max={getMaxPrice(db.properties)}
             onChange={handleFilters}
