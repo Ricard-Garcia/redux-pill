@@ -257,8 +257,6 @@ function FiltersList({ foundProperties }) {
             endValue={getMaxPrice(db.properties)}
             max={getMaxPrice(db.properties)}
             onChange={handleFilters}
-            // onInput={function noRefCheck() {}}
-            slot=""
             style={{
               padding: "0 20px",
             }}
