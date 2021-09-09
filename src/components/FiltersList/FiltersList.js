@@ -4,7 +4,7 @@ import { RangeSlider } from "@ui5/webcomponents-react";
 
 import Searchbar from "../../components/Searchbar";
 import CustomCheckbox from "../../components/CustomCheckbox";
-import { getQuery } from "../../utilities/getQuery";
+import { getQuery } from "../../utils/utils";
 
 import "./FiltersList.scss";
 
