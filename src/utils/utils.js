@@ -34,8 +34,7 @@ export function getQuery(object) {
       }
     }
   }
-  console.log(query, "Final query");
-
+  // console.log(query, "Final query");
   return query;
 }
 

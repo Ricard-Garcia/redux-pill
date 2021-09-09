@@ -5,6 +5,7 @@ import { RangeSlider } from "@ui5/webcomponents-react";
 import Searchbar from "../../components/Searchbar";
 import CustomCheckbox from "../../components/CustomCheckbox";
 import { getQuery, getMaxPrice } from "../../utils/utils";
+import { setFilters } from "../../redux/search/actions";
 
 import db from "../../db/db.json";
 
@@ -15,15 +16,21 @@ function FiltersList({ foundProperties }) {
   const stateFilters = useSelector((state) => state.search.filters);
   const dispatch = useDispatch();
 
-  let [query, setQuery] = useState(
-    useSelector((state) => state.search.filteredQuery)
-  );
-
-  const [filters, setFilters] = useState(stateFilters);
+  const [filters, setInsideFilters] = useState(stateFilters);
 
   useEffect(() => {
-    console.log(filters);
-    getQuery(filters);
+    const query = getQuery(filters);
+    console.log("QUERY! ", query);
+    console.log("SEARCH! ", search);
+    // Updatig redux context
+    if (search !== "Search by city") {
+      console.log("RESET WITHOUT TEXT");
+      dispatch(setFilters(search, query));
+    }
+    // } else {
+    //   console.log("RESET WITH TEXT");
+    //   dispatch(setFilters(search, query));
+    // }
   }, [filters]);
 
   function handleFilters(e) {
@@ -36,14 +43,14 @@ function FiltersList({ foundProperties }) {
       !Array.isArray(stateField)
     ) {
       stateField[filterValue] = e.target.checked;
-      setFilters({ ...filters });
+      setInsideFilters({ ...filters });
     } else if (e.target.type === "checkbox") {
       console.log("clicked checkbox --> ", stateField);
-      setFilters({ ...filters, [filterValue]: e.target.checked });
+      setInsideFilters({ ...filters, [filterValue]: e.target.checked });
     } else if (e.target.type === "select-one") {
-      setFilters({ ...filters, [filterName]: filterValue });
+      setInsideFilters({ ...filters, [filterName]: filterValue });
     } else {
-      setFilters({
+      setInsideFilters({
         ...filters,
         minPrice: e.target.startValue,
         maxPrice: e.target.endValue,

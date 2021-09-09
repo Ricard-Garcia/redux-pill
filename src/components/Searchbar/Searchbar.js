@@ -14,7 +14,6 @@ function Searchbar({ classes, isHome }) {
   const stateFilters = useSelector((state) => state.search.filters);
 
   const query = getQuery(stateFilters);
-  console.log("query!", query);
 
   const history = useHistory();
   const searchInput = useRef();
@@ -25,8 +24,9 @@ function Searchbar({ classes, isHome }) {
     event.preventDefault();
     const searchedText = searchInput.current.value;
     dispatch(setFilters(searchedText, query));
+    console.log("Needs redirect?", isHome);
+
     if (isHome) {
-      console.log("Needs redirect?", isHome);
       history.push(DASHBOARD_URL);
     }
   }

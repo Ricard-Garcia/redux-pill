@@ -14,20 +14,23 @@ export const setSearch = (value) => ({
   payload: value,
 });
 
-export const getSearch = (searched) => {
-  return async (dispatch) => {
-    dispatch(resetSearch());
-    dispatch(setSearch(searched));
-    dispatch(loadingSearch());
+// export const getSearch = (searched) => {
+//   return async (dispatch) => {
+//     console.log("getSearch!");
+//     dispatch(resetSearch());
+//     dispatch(setSearch(searched));
+//     dispatch(loadingSearch());
 
-    const { data } = await getSearched(searched);
+//     // !! Move getFilteredProperties here
 
-    dispatch({
-      type: GET_SEARCH,
-      payload: data,
-    });
-  };
-};
+//     const { data } = await getSearched(searched);
+
+//     dispatch({
+//       type: GET_SEARCH,
+//       payload: data,
+//     });
+//   };
+// };
 
 export const resetSearch = () => ({
   type: RESET_SEARCH,
@@ -43,13 +46,21 @@ export const errorSearch = () => ({
 
 export const setFilters = (searched, query) => {
   return async (dispatch) => {
-    dispatch(loadingSearch());
+    try {
+      console.log("setFilters!");
+      // dispatch(loadingSearch());
 
-    const { filteredData } = await getFilteredProperties(searched, query);
+      const filteredQuery = await getFilteredProperties(searched, query);
 
-    dispatch({
-      type: SET_FILTERS,
-      payload: filteredData,
-    });
+      // Setting filters to state
+      dispatch({ type: GET_SEARCH, payload: filteredQuery.data });
+      dispatch(setSearch(searched));
+
+      // console.log("Searched", searchedText);
+      // Setting searched text to state
+      // dispatch(setSearch(searched));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };
