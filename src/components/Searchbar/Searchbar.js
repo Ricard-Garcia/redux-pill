@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { setFilters } from "../../redux/search/actions";
+import { searchAndSet } from "../../redux/search/actions";
 import { getQuery } from "../../utils/utils";
 
 import { DASHBOARD_URL } from "../../constants/routes";
@@ -23,7 +23,7 @@ function Searchbar({ classes, isHome }) {
   function handleSubmit(event) {
     event.preventDefault();
     const searchedText = searchInput.current.value;
-    dispatch(setFilters(searchedText, query));
+    dispatch(searchAndSet(searchedText, query, stateFilters));
     console.log("Needs redirect?", isHome);
 
     if (isHome) {
@@ -36,7 +36,8 @@ function Searchbar({ classes, isHome }) {
       <input
         ref={searchInput}
         type="text"
-        placeholder={search.searchedText}
+        placeholder={isHome ? search.searchedText : ""}
+        defaultValue={isHome ? "" : search.searchedText}
         className="border-end-0 rounded-start border bg-light px-3"
       />
       <button className="border-0 text-light bg-dark rounded-end" type="submit">

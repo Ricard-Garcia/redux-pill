@@ -1,10 +1,11 @@
 import {
   SET_SEARCH,
   GET_SEARCH,
+  SET_FILTERS,
+  SET_QUERY,
   RESET_SEARCH,
   LOADING_SEARCH,
   ERROR_SEARCH,
-  SET_FILTERS,
 } from "./types";
 
 import initialState from "./state";
@@ -21,6 +22,19 @@ const reducer = (state = initialState, action) => {
     case GET_SEARCH: {
       return { ...state, foundProperties: action.payload, isLoading: false };
     }
+    case SET_FILTERS: {
+      return {
+        ...state,
+        filterActive: true,
+        isLoading: false,
+        filters: {
+          ...action.payload,
+        },
+      };
+    }
+    case SET_QUERY: {
+      return { ...state, filteredQuery: action.payload };
+    }
     case RESET_SEARCH: {
       return initialState;
     }
@@ -36,16 +50,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         searchedText: "Nothing found",
         hasError: true,
-      };
-    }
-    case SET_FILTERS: {
-      return {
-        ...state,
-        filterActive: true,
-        isLoading: false,
-        filters: {
-          ...action.payload,
-        },
       };
     }
     default: {

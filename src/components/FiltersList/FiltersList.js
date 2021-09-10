@@ -5,7 +5,7 @@ import { RangeSlider } from "@ui5/webcomponents-react";
 import Searchbar from "../../components/Searchbar";
 import CustomCheckbox from "../../components/CustomCheckbox";
 import { getQuery, getMaxPrice } from "../../utils/utils";
-import { setFilters } from "../../redux/search/actions";
+import { searchAndSet } from "../../redux/search/actions";
 
 import db from "../../db/db.json";
 
@@ -19,10 +19,9 @@ function FiltersList({ foundProperties }) {
 
   useEffect(() => {
     const query = getQuery(filters);
-
     // Updatig redux context
     if (search !== "Search by city") {
-      dispatch(setFilters(search, query));
+      dispatch(searchAndSet(search, query, filters));
     }
   }, [filters]);
 
