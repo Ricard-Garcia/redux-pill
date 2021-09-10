@@ -133,6 +133,33 @@
       "swimming_pool": false,
       "terrace": true,
       "publication_date": "2015/04/14 01:01:01"
+    },
+    {
+      "id": 5,
+      "title": "Incredible dreamed familiar home",
+      "imageURL": "https://images.unsplash.com/photo-1572986564625-2feb29fbb77a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+      "street": "València",
+      "number": 43,
+      "city": "Reus",
+      "province": "Tarragona",
+      "country": "Spain",
+      "status": "available",
+      "type": "house",
+      "description": "This is the description of the property",
+      "contact_mail": "hola@reus.com",
+      "contact_phone": "+33535465557",
+      "condition": "good",
+      "room": 9,
+      "bath": 3,
+      "size": 900,
+      "price": 300000,
+      "pet": true,
+      "lift": false,
+      "garden": true,
+      "air_conditioning": true,
+      "swimming_pool": true,
+      "terrace": false,
+      "publication_date": "2021/09/08 01:01:01"
     }
   ],
   "favorite": [
