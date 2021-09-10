@@ -19,6 +19,7 @@ function FiltersList({ foundProperties }) {
 
   useEffect(() => {
     const query = getQuery(filters);
+
     // Updatig redux context
     if (search !== "Search by city") {
       dispatch(setFilters(search, query));

@@ -23,8 +23,6 @@ export function getFilteredProperties(
   query,
   api = makePropertiesApi()
 ) {
-  console.log("Get filtered properties");
-
   // If there's searched text
   if (searched === "") {
     return api.get(`?${query}`);
