@@ -15,22 +15,14 @@ function FiltersList({ foundProperties }) {
   const search = useSelector((state) => state.search.searchedText);
   const stateFilters = useSelector((state) => state.search.filters);
   const dispatch = useDispatch();
-
   const [filters, setInsideFilters] = useState(stateFilters);
 
   useEffect(() => {
     const query = getQuery(filters);
-    console.log("QUERY! ", query);
-    console.log("SEARCH! ", search);
     // Updatig redux context
     if (search !== "Search by city") {
-      console.log("RESET WITHOUT TEXT");
       dispatch(setFilters(search, query));
     }
-    // } else {
-    //   console.log("RESET WITH TEXT");
-    //   dispatch(setFilters(search, query));
-    // }
   }, [filters]);
 
   function handleFilters(e) {
