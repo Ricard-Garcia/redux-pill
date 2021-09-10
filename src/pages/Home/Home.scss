@@ -1,0 +1,17 @@
+.home-wrapper {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  color: white;
+
+  .home-title {
+    font-size: 75px;
+    line-height: 70px;
+    font-weight: bold;
+  }
+
+  .home-subtitle {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+}
