@@ -5,11 +5,15 @@ import { HOME_URL } from "../../constants/routes";
 
 function Header() {
   return (
-    <div className="d-flex justify-content-between align-items-center header bg-dark px-4">
-      <Link to={HOME_URL}>
-        <h1 className="text-light page-title">Flat Finder</h1>
-      </Link>
-      <button type="button" className="btn btn-dark">
+    <div className="d-flex justify-content-between align-items-center border-bottom bg-light px-4 header">
+      <div className="d-flex logo-wrapper">
+        <i class="uil uil-home me-3 fs-2" />
+        <Link className="link" to={HOME_URL}>
+          <h1 className="text-dark page-title fw-bold">FindPlace</h1>
+        </Link>
+      </div>
+
+      <button type="button" className="d-none d-md-block btn btn-outline-dark">
         Login
       </button>
     </div>

@@ -1,13 +1,13 @@
 .filters-block {
-  min-height: 240px;
+  // height: ;
   .filter-column {
-    min-height: 100%;
+    // min-height: 80%;
 
     hr {
       border-color: lightgrey;
     }
     .filter-wrapper {
-      height: 80px;
+      min-height: 80px;
 
       .filter-title {
         font-weight: bold;

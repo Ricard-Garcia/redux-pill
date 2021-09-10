@@ -51,8 +51,8 @@ function FiltersList({ foundProperties }) {
   }
 
   return (
-    <div className="row filters-block bg-light border rounded g-4 mt-5 mb-5 p-3 pb-5">
-      <div className="col col-4 filter-column">
+    <div className="row filters-block bg-light border rounded g-4 mx-1 mt-3 mb-4 p-3 pb-2">
+      <div className="col col-12 col-lg-4 filter-column">
         {/* Searchbar */}
         <div className="row mb-4 px-2 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Searchbar</div>
@@ -119,7 +119,7 @@ function FiltersList({ foundProperties }) {
         </div>
       </div>
 
-      <div className="col col-4 filter-column">
+      <div className="col col-12 col-lg-4 filter-column">
         {/* Bedrooms */}
         <div className="row mb-4 px-2 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Bedrooms</div>
@@ -264,7 +264,7 @@ function FiltersList({ foundProperties }) {
         </div>
       </div>
 
-      <div className="col col-4 filter-column">
+      <div className="col col-12 col-lg-4 filter-column">
         {/* Publication date */}
         <div className="row mb-4 px-2 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Publication date</div>
