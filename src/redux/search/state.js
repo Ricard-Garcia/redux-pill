@@ -1,3 +1,6 @@
+import db from "../../db/db.json";
+import { getMaxPrice } from "../../utils/utils";
+
 const initialState = {
   searchedText: "Search by city",
   isLoading: false,
@@ -15,8 +18,8 @@ const initialState = {
     room: { 0: false, 1: false, 2: false, 3: false, fourOrMore: false },
     bath: { 1: false, 2: false, threeOrMore: false },
     //size: 0,
-    minPrice: false,
-    maxPrice: false,
+    minPrice: 0,
+    maxPrice: getMaxPrice(db.properties),
     pet: false,
     lift: false,
     garden: false,

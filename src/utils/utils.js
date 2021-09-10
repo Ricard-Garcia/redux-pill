@@ -25,6 +25,7 @@ function timeFilter(publicationDate = 2) {
   return searchedDate;
 }
 
+// API query
 export function getQuery(object) {
   let query = "";
   for (const property in object) {
@@ -60,7 +61,7 @@ export function getQuery(object) {
           if (innerProperty === "fourOrMore") {
             query += "&room_gte=4";
           } else if (innerProperty === "threeOrMore") {
-            query += "&room_gte=3";
+            query += "&bath_gte=3";
           } else {
             query += `&${property}=${innerProperty}`;
           }
@@ -71,4 +72,14 @@ export function getQuery(object) {
   console.log(query, "Final query");
 
   return query;
+}
+
+// Range slider
+export function getMaxPrice(array) {
+  let maxPriceArr = [];
+  array.map((property) => {
+    maxPriceArr.push(property.price);
+  });
+
+  return Math.max(...maxPriceArr);
 }
