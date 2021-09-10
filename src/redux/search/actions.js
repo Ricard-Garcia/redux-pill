@@ -1,33 +1,31 @@
 import {
   SET_SEARCH,
   GET_SEARCH,
+  SET_FILTERS,
+  SET_QUERY,
   RESET_SEARCH,
   LOADING_SEARCH,
   ERROR_SEARCH,
-  SET_FILTERS,
 } from "./types";
 
-import { getSearched, getFilteredProperties } from "../../api/propertiesApi";
+import { getFilteredProperties } from "../../api/propertiesApi";
 
 export const setSearch = (value) => ({
   type: SET_SEARCH,
   payload: value,
 });
 
-export const getSearch = (searched) => {
-  return async (dispatch) => {
-    dispatch(resetSearch());
-    dispatch(setSearch(searched));
-    dispatch(loadingSearch());
+export const getSearch = (foundProperties) => ({
+  type: GET_SEARCH,
+  payload: foundProperties,
+});
 
-    const { data } = await getSearched(searched);
+export const setFilters = (filters) => ({
+  type: SET_FILTERS,
+  payload: filters,
+});
 
-    dispatch({
-      type: GET_SEARCH,
-      payload: data,
-    });
-  };
-};
+export const setQuery = (query) => ({ type: SET_QUERY, payload: query });
 
 export const resetSearch = () => ({
   type: RESET_SEARCH,
@@ -41,15 +39,25 @@ export const errorSearch = () => ({
   type: ERROR_SEARCH,
 });
 
-export const setFilters = (searched, query) => {
+export const searchAndSet = (searched, query, filters) => {
   return async (dispatch) => {
-    dispatch(loadingSearch());
+    try {
+      console.log("searchAndSet!");
+      dispatch(loadingSearch());
 
-    const { filteredData } = await getFilteredProperties(searched, query);
+      const filteredQuery = await getFilteredProperties(searched, query);
 
-    dispatch({
-      type: SET_FILTERS,
-      payload: filteredData,
-    });
+      // Setting properties to state
+      dispatch(getSearch(filteredQuery.data));
+      // Setting searched text to state
+      dispatch(setSearch(searched));
+      // Setting filters to state
+      dispatch(setFilters(filters));
+      // !!! TODO concatenate query ?
+      // Set query
+      dispatch(setQuery(query));
+    } catch (error) {
+      console.log(error);
+    }
   };
 };

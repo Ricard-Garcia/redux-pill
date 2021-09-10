@@ -5,6 +5,7 @@ import { RangeSlider } from "@ui5/webcomponents-react";
 import Searchbar from "../../components/Searchbar";
 import CustomCheckbox from "../../components/CustomCheckbox";
 import { getQuery, getMaxPrice } from "../../utils/utils";
+import { searchAndSet } from "../../redux/search/actions";
 
 import db from "../../db/db.json";
 
@@ -14,16 +15,14 @@ function FiltersList({ foundProperties }) {
   const search = useSelector((state) => state.search.searchedText);
   const stateFilters = useSelector((state) => state.search.filters);
   const dispatch = useDispatch();
-
-  let [query, setQuery] = useState(
-    useSelector((state) => state.search.filteredQuery)
-  );
-
-  const [filters, setFilters] = useState(stateFilters);
+  const [filters, setInsideFilters] = useState(stateFilters);
 
   useEffect(() => {
-    console.log(filters);
-    getQuery(filters);
+    const query = getQuery(filters);
+    // Updatig redux context
+    if (search !== "Search by city") {
+      dispatch(searchAndSet(search, query, filters));
+    }
   }, [filters]);
 
   function handleFilters(e) {
@@ -36,14 +35,14 @@ function FiltersList({ foundProperties }) {
       !Array.isArray(stateField)
     ) {
       stateField[filterValue] = e.target.checked;
-      setFilters({ ...filters });
+      setInsideFilters({ ...filters });
     } else if (e.target.type === "checkbox") {
       console.log("clicked checkbox --> ", stateField);
-      setFilters({ ...filters, [filterValue]: e.target.checked });
+      setInsideFilters({ ...filters, [filterValue]: e.target.checked });
     } else if (e.target.type === "select-one") {
-      setFilters({ ...filters, [filterName]: filterValue });
+      setInsideFilters({ ...filters, [filterName]: filterValue });
     } else {
-      setFilters({
+      setInsideFilters({
         ...filters,
         minPrice: e.target.startValue,
         maxPrice: e.target.endValue,
@@ -57,7 +56,7 @@ function FiltersList({ foundProperties }) {
         {/* Searchbar */}
         <div className="row mb-4 px-2 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Searchbar</div>
-          <Searchbar classes="mb-3" />
+          <Searchbar classes="px-2 my-1" />
         </div>
         <hr />
         {/* Type */}
@@ -93,9 +92,9 @@ function FiltersList({ foundProperties }) {
 
         <hr />
         {/* Condition */}
-        <div className="mb-4 px-2 filter-wrapper">
+        <div className="row mb-4 px-2 filter-wrapper">
           <div className="fs-p mb-2 filter-title">Condition</div>
-          <div className="row row-cols-2">
+          <div className="row row-cols-1 row-cols-md-2">
             <CustomCheckbox
               onChange={handleFilters}
               title="New homes"

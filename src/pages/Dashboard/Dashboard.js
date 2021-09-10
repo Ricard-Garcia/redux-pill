@@ -6,8 +6,6 @@ import withLayout from "../../HOC/withLayout";
 import PropertiesList from "../../components/PropertiesList";
 import FilterList from "../../components/FiltersList";
 
-// import { getAllProperties } from "../../api/propertiesApi";
-
 function Dashboard() {
   const search = useSelector((state) => state.search);
 
