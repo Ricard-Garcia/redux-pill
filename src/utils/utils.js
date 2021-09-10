@@ -1,3 +1,5 @@
+import db from "../../db/db.json";
+
 // API query
 export function getQuery(object) {
   let query = "";
@@ -32,7 +34,7 @@ export function getQuery(object) {
       for (const innerProperty in object[property]) {
         if (object[property][innerProperty] === true) {
           if (innerProperty === "fourOrMore") {
-            query += "&room_gte=4";
+            query += `&room_like=[4-${getMaxRooms()[0]}]`;
           } else if (innerProperty === "threeOrMore") {
             query += "&bath_gte=3";
           } else {
@@ -83,3 +85,16 @@ function timeFilter(publicationDate = 2) {
 
   return searchedDate;
 }
+
+// Getting max rooms and baths
+export const getMaxRooms = function (data = db.properties) {
+  let maxRoomsArr = [];
+  let maxBathsArr = [];
+
+  data.map((property) => {
+    maxRoomsArr.push(property.room);
+    maxBathsArr.push(property.bath);
+  });
+
+  return [Math.max(...maxRoomsArr), Math.max(...maxBathsArr)];
+};
