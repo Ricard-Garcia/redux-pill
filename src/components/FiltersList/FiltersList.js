@@ -18,36 +18,6 @@ function FiltersList({ foundProperties }) {
   let [query, setQuery] = useState(
     useSelector((state) => state.search.filteredQuery)
   );
-<<<<<<< HEAD
-
-  const [filters, setFilters] = useState(stateFilters);
-
-  useEffect(() => {
-    getQuery(filters);
-  }, [filters]);
-
-  function handleFilters(e) {
-    const filterName = e.target.name;
-    const filterValue = e.target.value;
-    let stateField = filters[filterName];
-    if (
-      typeof stateField === "object" &&
-      stateField !== null &&
-      !Array.isArray(stateField)
-    ) {
-      stateField[filterValue] = e.target.checked;
-      console.log(filters);
-      setFilters({ ...filters });
-    } else if (e.target.type === "checkbox") {
-      setFilters({ ...filters, [filterValue]: e.target.checked });
-    } else if (e.target.type === "select-one") {
-      setFilters({ ...filters, [filterName]: filterValue });
-    } else {
-      //Range slider function goes here
-    }
-  }
-=======
->>>>>>> master
 
   const [filters, setFilters] = useState(stateFilters);
 

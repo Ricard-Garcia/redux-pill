@@ -1,30 +1,3 @@
-function timeFilter(publicationDate = 2) {
-  const actualDate = new Date();
-  const substractedDate = new Date(
-    actualDate.setDate(actualDate.getDate() - publicationDate)
-  );
-
-  const month = String(substractedDate.getMonth() + 1);
-  const formatedMonth = month.length === 1 ? "0" + month : month;
-
-  const day = String(substractedDate.getDate());
-  const formatedDay = day.length === 1 ? "0" + day : day;
-
-  const searchedDate =
-    substractedDate.getFullYear() +
-    "/" +
-    formatedMonth +
-    "/" +
-    formatedDay +
-    substractedDate.getHours() +
-    ":" +
-    substractedDate.getMinutes() +
-    ":" +
-    substractedDate.getSeconds();
-
-  return searchedDate;
-}
-
 // API query
 export function getQuery(object) {
   let query = "";
@@ -82,4 +55,32 @@ export function getMaxPrice(array) {
   });
 
   return Math.max(...maxPriceArr);
+}
+
+// Publication date selector
+function timeFilter(publicationDate = 2) {
+  const actualDate = new Date();
+  const substractedDate = new Date(
+    actualDate.setDate(actualDate.getDate() - publicationDate)
+  );
+
+  const month = String(substractedDate.getMonth() + 1);
+  const formatedMonth = month.length === 1 ? "0" + month : month;
+
+  const day = String(substractedDate.getDate());
+  const formatedDay = day.length === 1 ? "0" + day : day;
+
+  const searchedDate =
+    substractedDate.getFullYear() +
+    "/" +
+    formatedMonth +
+    "/" +
+    formatedDay +
+    substractedDate.getHours() +
+    ":" +
+    substractedDate.getMinutes() +
+    ":" +
+    substractedDate.getSeconds();
+
+  return searchedDate;
 }
