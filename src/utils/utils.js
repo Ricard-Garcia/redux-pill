@@ -1,5 +1,3 @@
-import db from "../db/db.json";
-
 // API query
 export function getQuery(object) {
   let query = "";
@@ -85,7 +83,7 @@ export function getQuery(object) {
               query += `&${property}=${innerProperty}`;
             }
           } else {
-            query += `&${property}=${innerProperty}`;
+            query += `&${property}_like=${innerProperty}`;
           }
         }
       }
