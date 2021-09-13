@@ -41,7 +41,6 @@ const reducer = (state = initialState, action) => {
     case LOADING_SEARCH: {
       return {
         ...state,
-        // searchedText: "Loading properties",
         isLoading: true,
       };
     }
