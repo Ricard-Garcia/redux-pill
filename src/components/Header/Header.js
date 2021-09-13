@@ -7,7 +7,7 @@ function Header() {
   return (
     <div className="d-flex justify-content-between align-items-center border-bottom bg-light px-4 header">
       <div className="d-flex logo-wrapper">
-        <i class="uil uil-home me-3 fs-2" />
+        <i className="uil uil-home me-3 fs-2" />
         <Link className="link" to={HOME_URL}>
           <h1 className="text-dark page-title fw-bold">FindPlace</h1>
         </Link>

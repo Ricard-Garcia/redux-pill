@@ -53,7 +53,6 @@ export const searchAndSet = (searched, query, filters) => {
       dispatch(setSearch(searched));
       // Setting filters to state
       dispatch(setFilters(filters));
-      // !!! TODO concatenate query ?
       // Set query
       dispatch(setQuery(query));
     } catch (error) {
