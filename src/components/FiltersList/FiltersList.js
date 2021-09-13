@@ -68,24 +68,28 @@ function FiltersList({ foundProperties }) {
               title="Flat/Aparment"
               name="type"
               value="flat/apartment"
+              isChecked={filters.type["flat/apartment"]}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Duplex"
               name="type"
               value="duplex"
+              isChecked={filters.type.duplex}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="House"
               name="type"
               value="house"
+              isChecked={filters.type.house}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Penthouse"
               name="type"
               value="penthouse"
+              isChecked={filters.type.penthouse}
             />
           </div>
         </div>
@@ -100,18 +104,21 @@ function FiltersList({ foundProperties }) {
               title="New homes"
               name="condition"
               value="new"
+              isChecked={filters.condition.new}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Good condition"
               name="condition"
               value="good"
+              isChecked={filters.condition.good}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Needs reform"
               name="condition"
               value="reform"
+              isChecked={filters.condition.reform}
             />
             {/* !!! TODO to be solved */}
             <p className="col"></p>
@@ -136,6 +143,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="room"
               value={0}
+              checked={filters.room[0]}
             />
             <label className="btn btn-outline-dark" htmlFor="bedroom0">
               0 (Studio flat)
@@ -149,6 +157,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="room"
               value={1}
+              checked={filters.room[1]}
             />
             <label className="btn btn-outline-dark" htmlFor="bedroom1">
               1
@@ -162,6 +171,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="room"
               value={2}
+              checked={filters.room[2]}
             />
             <label className="btn btn-outline-dark" htmlFor="bedroom2">
               2
@@ -174,6 +184,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="room"
               value={3}
+              checked={filters.room[3]}
             />
             <label className="btn btn-outline-dark" htmlFor="bedroom3">
               3
@@ -186,6 +197,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="room"
               value="fourOrMore"
+              checked={filters.room.fourOrMore}
             />
             <label className="btn btn-outline-dark" htmlFor="bedroom4">
               4 or +
@@ -209,6 +221,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="bath"
               value={1}
+              checked={filters.bath[1]}
             />
             <label className="btn btn-outline-dark" htmlFor="bathroom1">
               1
@@ -222,6 +235,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="bath"
               value={2}
+              checked={filters.bath[2]}
             />
             <label className="btn btn-outline-dark" htmlFor="bathroom2">
               2
@@ -235,6 +249,7 @@ function FiltersList({ foundProperties }) {
               autoComplete="off"
               name="bath"
               value="threeOrMore"
+              checked={filters.bath.threeOrMore}
             />
             <label className="btn btn-outline-dark" htmlFor="bathroom3">
               3 or +
@@ -253,8 +268,9 @@ function FiltersList({ foundProperties }) {
           </div>
           <RangeSlider
             className="range-slider"
-            endValue={getMaxPrice(db.properties)}
+            endValue={filters.maxPrice}
             max={getMaxPrice(db.properties)}
+            startValue={filters.minPrice}
             onChange={handleFilters}
             style={{
               padding: "0 20px",
@@ -273,6 +289,7 @@ function FiltersList({ foundProperties }) {
             aria-label="Publication select"
             name="publication_date"
             onChange={handleFilters}
+            value={filters.publication_date}
           >
             <option defaultValue>Select a date</option>
             <option value="2">Last 48 hours</option>
@@ -305,36 +322,42 @@ function FiltersList({ foundProperties }) {
               title="Pet friendly"
               name="pet"
               value="pet"
+              isChecked={filters.pet}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Air conditioning"
               name="air_conditioning"
               value="air_conditioning"
+              isChecked={filters.air_conditioning}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Swimming pool"
               name="swimming_pool"
               value="swimming_pool"
+              isChecked={filters.swimming_pool}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Garden"
               name="garden"
               value="garden"
+              isChecked={filters.garden}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Terrace"
               name="terrace"
               value="terrace"
+              isChecked={filters.terrace}
             />
             <CustomCheckbox
               onChange={handleFilters}
               title="Lift"
               name="lift"
               value="lift"
+              isChecked={filters.lift}
             />
           </div>
         </div>
