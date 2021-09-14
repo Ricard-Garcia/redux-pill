@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { HOME_URL } from "../../constants/routes";
 
 function Header() {
+  const user = useSelector((state) => state.user);
+
   return (
     <div className="d-flex justify-content-between align-items-center border-bottom bg-light px-4 header">
       <div className="d-flex logo-wrapper">
@@ -13,6 +16,7 @@ function Header() {
         </Link>
       </div>
 
+      {user.name && <p>user.name</p>}
       <button
         type="button"
         className="d-none d-md-block btn btn-outline-dark"

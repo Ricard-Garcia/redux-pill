@@ -2,7 +2,8 @@ import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "../../redux/user/actions";
-import { DASHBOARD_URL, HOME_URL } from "../../constants/routes";
+import { HOME_URL } from "../../constants/routes";
+import cn from "clsx";
 
 function Modal() {
   const dispatch = useDispatch();
@@ -24,12 +25,17 @@ function Modal() {
     }
   }, [user.isLogged]);
 
+  const modalClasses = cn({
+    "modal fade": !user.isLogged,
+    "modal fade hide": user.isLogged,
+  });
+
   return (
     <div
-      className="modal fade"
+      className={modalClasses}
       id="loginModal"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
+      data-bs-backdrop="false"
+      data-bs-keyboard="true"
       tabIndex="-1"
       aria-labelledby="loginModalLabel"
       aria-hidden="true"
