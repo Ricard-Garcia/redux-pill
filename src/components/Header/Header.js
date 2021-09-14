@@ -13,7 +13,12 @@ function Header() {
         </Link>
       </div>
 
-      <button type="button" className="d-none d-md-block btn btn-outline-dark">
+      <button
+        type="button"
+        className="d-none d-md-block btn btn-outline-dark"
+        data-bs-toggle="modal"
+        data-bs-target="#loginModal"
+      >
         Login
       </button>
     </div>
