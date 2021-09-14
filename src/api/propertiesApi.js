@@ -6,6 +6,13 @@ function makePropertiesApi() {
   return axios.create({ baseURL: `${API.MAIN}${API.PROPERTIES}` });
 }
 
+function authClient() {
+  return axios.create({
+    baseURL: `${API.MAIN}`,
+    withCredentials: true,
+  });
+}
+
 // export function getAllProperties(api = makePropertiesApi()) {
 //   return api.get("");
 // }
@@ -31,4 +38,16 @@ export function getFilteredProperties(
   } else {
     return api.get(`?${searched}`);
   }
+}
+
+export function setAuth(email, password, api = authClient()) {
+  return api
+    .post("/api/login", {
+      email: email,
+      password: password,
+    })
+    .then((response) => {
+      console.log(response.data.data, "IN");
+      return response;
+    });
 }

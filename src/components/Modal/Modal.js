@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserData } from "../../redux/user/actions";
+import { DASHBOARD_URL, HOME_URL } from "../../constants/routes";
 
-function Modal({ children }) {
+function Modal() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state) => state.user);
+  const emailInput = useRef();
+  const passInput = useRef();
+
   function handleLogIn() {
-    const email = document.getElementById("inputEmail").value;
-    const password = document.getElementById("inputPassword").value;
+    dispatch(getUserData(emailInput.current.value, passInput.current.value));
     console.log("Logged in");
-    console.log(email, password);
   }
+
+  useEffect(() => {
+    console.log(user.isLogged, "IS LOGGED");
+    if (user.isLogged === true) {
+      console.log("SHOULD BE MOVING");
+      history.push(HOME_URL);
+    }
+  }, [user.isLogged]);
 
   return (
     <div
@@ -31,7 +47,34 @@ function Modal({ children }) {
               aria-label="Close"
             ></button>
           </div>
-          <div className="modal-body">{children}</div>
+          <div className="modal-body">
+            {/* ! Form */}
+            <div className="row g-4">
+              <div className="col-12">
+                <label htmlFor="inputEmail" className="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="inputEmail"
+                  ref={emailInput}
+                />
+              </div>
+
+              <div className="col-12 mb-3">
+                <label htmlFor="inputPassword" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="inputPassword"
+                  ref={passInput}
+                />
+              </div>
+            </div>
+          </div>
           <div className="modal-footer">
             <button
               type="button"
