@@ -16,15 +16,19 @@ function Header() {
         </Link>
       </div>
 
-      {user.name && <p>user.name</p>}
-      <button
-        type="button"
-        className="d-none d-md-block btn btn-outline-dark"
-        data-bs-toggle="modal"
-        data-bs-target="#loginModal"
-      >
-        Login
-      </button>
+      <div className="d-flex align-items-center">
+        {user.name && (
+          <p className="d-flex align-items-center fw-bold">{user.name}</p>
+        )}
+        <button
+          type="button"
+          className="d-none d-md-block btn btn-outline-dark ms-3"
+          data-bs-toggle="modal"
+          data-bs-target="#loginModal"
+        >
+          Login
+        </button>
+      </div>
     </div>
   );
 }

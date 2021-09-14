@@ -40,14 +40,16 @@ export function getFilteredProperties(
   }
 }
 
-export function setAuth(email, password, api = authClient()) {
-  return api
-    .post("/api/login", {
-      email: email,
-      password: password,
-    })
-    .then((response) => {
-      console.log(response.data.data, "IN");
-      return response;
-    });
+export async function setAuth(email, password, api = authClient()) {
+  return api.get("/sanctum/csrf-cookie").then((response) => {
+    return api
+      .post("/api/login", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response.data.data, "IN");
+        return response;
+      });
+  });
 }
