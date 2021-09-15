@@ -3,7 +3,10 @@ import { API } from "../constants/routes";
 const axios = require("axios").default;
 
 function makePropertiesApi() {
-  return axios.create({ baseURL: `${API.MAIN}${API.PROPERTIES}` });
+  return axios.create({
+    baseURL: `${API.MAIN}${API.PROPERTIES}`,
+    withCredentials: true,
+  });
 }
 
 function authClient() {
@@ -13,13 +16,24 @@ function authClient() {
   });
 }
 
-// export function getAllProperties(api = makePropertiesApi()) {
-//   return api.get("");
-// }
-
-export function getSearched(searched, api = makePropertiesApi()) {
-  return api.get(`?q=${searched}`);
+function apiTest() {
+  return axios.create({
+    baseURL: "http://localhost:8100/api/properties?q=nyc",
+    withCredentials: true,
+  });
 }
+
+export function getAllProperties(api = apiTest()) {
+  return api.get("");
+}
+
+export function getSearched(searched = "", api = apiTest()) {
+  return api.get("");
+}
+
+/* export function getSearched(searched, api = makePropertiesApi()) {
+  return api.get(`?q=${searched}`);
+} */
 
 // export function getProperty(productId, api = makePropertiesApi()) {
 //   return api.get(`/${productId}`);

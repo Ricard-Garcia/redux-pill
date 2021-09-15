@@ -1,7 +1,6 @@
 import { SET_USER, RESET_USER } from "./types";
 
 import { setAuth } from "../../api/propertiesApi";
-import { HOME_URL } from "../../constants/routes";
 
 export const setUser = (userData) => ({
   type: SET_USER,
