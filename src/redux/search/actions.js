@@ -42,13 +42,12 @@ export const errorSearch = () => ({
 export const searchAndSet = (searched, query, filters) => {
   return async (dispatch) => {
     try {
-      console.log("searchAndSet!");
       dispatch(loadingSearch());
-
       const filteredQuery = await getFilteredProperties(searched, query);
+      console.log("Filtered query --> ", filteredQuery);
 
       // Setting properties to state
-      dispatch(getSearch(filteredQuery.data));
+      dispatch(getSearch(filteredQuery.data.data));
       // Setting searched text to state
       dispatch(setSearch(searched));
       // Setting filters to state

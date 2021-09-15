@@ -14,13 +14,12 @@ function Modal() {
 
   function handleLogIn() {
     dispatch(getUserData(emailInput.current.value, passInput.current.value));
-    console.log("Logged in");
+    // console.log("Logged in");
   }
 
   useEffect(() => {
-    console.log(user.isLogged, "IS LOGGED");
+    // console.log(user.isLogged, "IS LOGGED");
     if (user.isLogged === true) {
-      console.log("SHOULD BE MOVING");
       history.push(HOME_URL);
     }
   }, [user.isLogged]);

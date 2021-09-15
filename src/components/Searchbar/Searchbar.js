@@ -24,8 +24,6 @@ function Searchbar({ classes, isHome }) {
     event.preventDefault();
     const searchedText = searchInput.current.value;
     dispatch(searchAndSet(searchedText, query, stateFilters));
-    console.log("Needs redirect?", isHome);
-
     if (isHome) {
       history.push(DASHBOARD_URL);
     }

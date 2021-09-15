@@ -16,20 +16,13 @@ function authClient() {
   });
 }
 
-function apiTest() {
-  return axios.create({
-    baseURL: "http://localhost:8100/api/properties?q=nyc",
-    withCredentials: true,
-  });
-}
+// export function getAllProperties(api = apiTest()) {
+//   return api.get("");
+// }
 
-export function getAllProperties(api = apiTest()) {
-  return api.get("");
-}
-
-export function getSearched(searched = "", api = apiTest()) {
-  return api.get("");
-}
+// export function getSearched(searched = "", api = apiTest()) {
+//   return api.get(searched);
+// }
 
 /* export function getSearched(searched, api = makePropertiesApi()) {
   return api.get(`?q=${searched}`);
@@ -62,7 +55,7 @@ export async function setAuth(email, password, api = authClient()) {
         password: password,
       })
       .then((response) => {
-        console.log(response.data.data, "IN");
+        // console.log(response.data.data, "IN");
         return response;
       });
   });

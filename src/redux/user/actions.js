@@ -11,10 +11,8 @@ export const getUserData = (email, password) => {
   return async (dispatch) => {
     try {
       const response = await setAuth(email, password);
-
       const userData = response.data.data;
-
-      console.log(userData, "USER DATA");
+      // console.log(userData, "USER DATA");
       dispatch(setUser(userData));
     } catch (error) {
       console.log(error);
