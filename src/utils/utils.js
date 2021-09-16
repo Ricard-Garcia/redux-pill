@@ -2,6 +2,7 @@
 export function getQuery(object) {
   let query = "";
   let typeArr = [];
+  let conditionArr = [];
   for (const property in object) {
     if (typeof object[property] !== "object" && object[property] !== false) {
       if (object[property] === true) {
@@ -85,6 +86,7 @@ export function getQuery(object) {
             }
           } else {
             let typeQuery = "";
+            let conditionQuery = "";
             if (property === "type") {
               for (const innerProperty in object[property]) {
                 if (object[property][innerProperty] === true) {
@@ -94,6 +96,16 @@ export function getQuery(object) {
               typeQuery += `&${property}=${typeArr}`;
               if (!query.includes("type")) {
                 query += typeQuery;
+              }
+            } else if (property === "condition") {
+              for (const innerProperty in object[property]) {
+                if (object[property][innerProperty] === true) {
+                  conditionArr.push(`${innerProperty}`);
+                }
+              }
+              conditionQuery += `&${property}=${conditionArr}`;
+              if (!query.includes("condition")) {
+                query += conditionQuery;
               }
             }
           }
