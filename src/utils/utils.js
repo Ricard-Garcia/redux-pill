@@ -1,6 +1,7 @@
 // API query
 export function getQuery(object) {
   let query = "";
+  let typeArr = [];
   for (const property in object) {
     if (typeof object[property] !== "object" && object[property] !== false) {
       if (object[property] === true) {
@@ -83,7 +84,18 @@ export function getQuery(object) {
               query += `&${property}=${innerProperty}`;
             }
           } else {
-            query += `&${property}_like=${innerProperty}`;
+            let typeQuery = "";
+            if (property === "type") {
+              for (const innerProperty in object[property]) {
+                if (object[property][innerProperty] === true) {
+                  typeArr.push(`${innerProperty}`);
+                }
+              }
+              typeQuery += `&${property}=${typeArr}`;
+              if (!query.includes("type")) {
+                query += typeQuery;
+              }
+            }
           }
         }
       }
