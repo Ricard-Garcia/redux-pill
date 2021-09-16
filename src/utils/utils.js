@@ -33,56 +33,50 @@ export function getQuery(object) {
       for (const innerProperty in object[property]) {
         if (object[property][innerProperty] === true) {
           // Porperties rooms filter
-          let roomQuery = "";
           if (property === "room") {
             let roomsArr = [];
             for (const roomNumber in object.room) {
-              if (object.room[roomNumber] === true) {
+              if (
+                object.room[roomNumber] === true &&
+                roomNumber !== "fourOrMore"
+              ) {
                 roomsArr.push(roomNumber);
               }
             }
+
+            if (!query.includes("room=") && roomsArr.length !== 0) {
+              query += `&${property}=${roomsArr}`;
+            }
+
             // Checking if the "four or more" option is selected
-            if (roomsArr.includes("fourOrMore")) {
-              roomQuery += "&room_like=.*";
-              for (let i = 0; i < 4; i++) {
-                if (!roomsArr.includes(String(i))) {
-                  roomQuery += `&room_ne=${i}`;
-                }
+            if (object[property]["fourOrMore"] === true) {
+              // query += `&${property}=${roomsArr}`;
+              if (!query.includes("room_gte")) {
+                query += `&${property}_gte=4`;
               }
-              // Avoids repeting code on the query
-              if (!query.includes(roomQuery)) {
-                query += roomQuery;
-              }
-              // If not process the query normally
-            } else {
-              query += `&${property}=${innerProperty}`;
             }
 
             // Properties bath filter
           } else if (property === "bath") {
-            let bathQuery = "";
             let bathsArr = [];
             for (const bathNumber in object.bath) {
-              if (object.bath[bathNumber] === true) {
+              if (
+                object.bath[bathNumber] === true &&
+                bathNumber !== "threeOrMore"
+              ) {
                 bathsArr.push(bathNumber);
               }
             }
-            // Checking if the "three or more" option is selected
-            if (bathsArr.includes("threeOrMore")) {
-              bathQuery += "&bath_like=.*";
-              if (!bathsArr.includes("1")) {
-                bathQuery += "&bath_ne=1";
-              } else if (!bathsArr.includes("2")) {
-                bathQuery += "&bath_ne=2";
-              }
-              // Avoids repeting code on the query
-              if (!query.includes(bathQuery)) {
-                query += bathQuery;
-              }
 
-              // If not process the query normally
-            } else {
-              query += `&${property}=${innerProperty}`;
+            if (!query.includes("bath=") && bathsArr.length !== 0) {
+              query += `&${property}=${bathsArr}`;
+            }
+
+            // Checking if the "three or more" option is selected
+            if (object[property]["threeOrMore"] === true) {
+              if (!query.includes("bath_gte")) {
+                query += `&${property}_gte=3`;
+              }
             }
           } else {
             let typeQuery = "";
